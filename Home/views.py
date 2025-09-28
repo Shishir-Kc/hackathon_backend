@@ -7,7 +7,6 @@ from .tools import upload_to_bucket
 from rest_framework import status
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def Home(request):
     data = []
 
@@ -31,9 +30,7 @@ def Home(request):
 
 
 @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
 def upload_user_image(request):
-    # user = request.user  
     image = request.FILES['file']
     if not image:
         return Response (
